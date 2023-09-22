@@ -87,20 +87,28 @@ def solve_piecewise():
     else:
         print("No roots found within the specified tolerance.")
 
-# Main menu
+# Define a function to add future options
+def future_option():
+    print("This is a future option.")
+
+# Main menu using a dictionary
+menu_options = {
+    '1': solve_polynomial,
+    '2': solve_piecewise,
+    '3': future_option,
+    '4': exit
+}
+
 while True:
     print("\nChoose an option:")
     print("1. Solve Polynomial Equation")
     print("2. Solve Piecewise Function")
-    print("3. Quit")
+    print("3. Future Option")
+    print("4. Quit")
     
     choice = input("Enter your choice: ")
     
-    if choice == "1":
-        solve_polynomial()
-    elif choice == "2":
-        solve_piecewise()
-    elif choice == "3":
-        break
+    if choice in menu_options:
+        menu_options[choice]()
     else:
-        print("Invalid choice. Please enter 1, 2, or 3.")
+        print("Invalid choice. Please enter a valid option.")
