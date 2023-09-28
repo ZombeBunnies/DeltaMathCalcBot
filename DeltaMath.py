@@ -6,7 +6,12 @@ def solve_polynomial():
     coefficients = [float(coeff) for coeff in coefficients]
     
     # Define the initial guess for the root
-    x0 = float(input("Enter the initial guess for the root: "))
+    x0 = None
+    while x0 is None:
+      try:
+        x0 = float(input("Enter the initial guess for the root: "))
+      except ValueError:
+        print("That is not a valid guess")
     
     # Set the tolerance for convergence
     tolerance = 1e-6
@@ -47,7 +52,13 @@ def solve_piecewise():
             return x**3 - 6
     
     # Define the initial guess for the root and tolerance
-    x0 = float(input("Enter the initial guess for the root: "))
+    x0 = None
+    while x0 is None:
+      try:
+        x0 = float(input("Enter the initial guess for the root: "))
+      except ValueError:
+        print("That is not a valid guess")
+    
     tolerance = 1e-6
     max_iterations = 100
     
