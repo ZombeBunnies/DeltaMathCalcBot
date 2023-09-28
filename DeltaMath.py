@@ -2,7 +2,14 @@ import numpy as np
 
 # Define the polynomial equation solver
 def solve_polynomial():
-    coefficients = input("Enter the coefficients of the polynomial separated by spaces (e.g., '1 -6 11 -6' for x^3 - 6x^2 + 11x - 6): ").split()
+    coefficients = None
+    while coefficients is None:
+        coefficients = input("Enter the coefficients of the polynomial separated by spaces (e.g., '1 -6 11 -6' for x^3 - 6x^2 + 11x - 6): ")
+        coefficients = coefficients.split(" ")
+        if len(coefficients) < 2:
+            print("Error: Wrong amount of coefficients")
+            coefficients = None
+    
     coefficients = [float(coeff) for coeff in coefficients]
     
     # Define the initial guess for the root
@@ -11,7 +18,7 @@ def solve_polynomial():
       try:
         x0 = float(input("Enter the initial guess for the root: "))
       except ValueError:
-        print("That is not a valid guess")
+        print("Error: That guess is not a valid number")
     
     # Set the tolerance for convergence
     tolerance = 1e-6
