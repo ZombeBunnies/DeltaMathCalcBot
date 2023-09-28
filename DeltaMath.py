@@ -1,6 +1,5 @@
 import numpy as np
 
-# Define the polynomial equation solver
 def solve_polynomial():
     coefficients = None
     while coefficients is None:
@@ -9,10 +8,8 @@ def solve_polynomial():
         if len(coefficients) < 2:
             print("Error: Wrong amount of coefficients")
             coefficients = None
-    
     coefficients = [float(coeff) for coeff in coefficients]
     
-    # Define the initial guess for the root
     x0 = None
     while x0 is None:
       try:
@@ -20,13 +17,10 @@ def solve_polynomial():
       except ValueError:
         print("Error: That guess is not a valid number")
     
-    # Set the tolerance for convergence
+    # Set the tolerance for convergence and the maximum number of iterations
     tolerance = 1e-6
-    
-    # Maximum number of iterations
     max_iterations = 100
     
-    # Define the polynomial function
     def polynomial(x):
         return np.polyval(coefficients, x)
     
@@ -42,13 +36,12 @@ def solve_polynomial():
             break
         x = x_new
     
-    # Display the result
+    # Display the results
     if i < max_iterations - 1:
         print(f"Root found at x = {x:.6f}")
     else:
         print("The method did not converge to a root within the specified tolerance.")
 
-# Define the piecewise function solver
 def solve_piecewise():
     def piecewise_function(x):
         if x < 1:
@@ -74,7 +67,7 @@ def solve_piecewise():
     roots = []
     
     for i in range(max_iterations):
-        x_new = x - piecewise_function(x) / (2 * x - 3)  # Derivative for the first segment
+        x_new = x - piecewise_function(x) / (2 * x - 3)
         if abs(x_new - x) < tolerance:
             roots.append(x_new)
             break
@@ -83,7 +76,7 @@ def solve_piecewise():
     x = x0  # Reset initial guess for the next segment
     
     for i in range(max_iterations):
-        x_new = x - piecewise_function(x) / 2  # Derivative for the second segment
+        x_new = x - piecewise_function(x) / 2
         if abs(x_new - x) < tolerance:
             roots.append(x_new)
             break
@@ -92,7 +85,7 @@ def solve_piecewise():
     x = x0  # Reset initial guess for the next segment
     
     for i in range(max_iterations):
-        x_new = x - piecewise_function(x) / (3 * x**2)  # Derivative for the third segment
+        x_new = x - piecewise_function(x) / (3 * x**2)
         if abs(x_new - x) < tolerance:
             roots.append(x_new)
             break
@@ -109,7 +102,6 @@ def solve_piecewise():
 def future_option():
     print("This is a future option.")
 
-# Main menu using a dictionary
 menu_options = {
     '1': solve_polynomial,
     '2': solve_piecewise,
